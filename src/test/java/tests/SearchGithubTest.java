@@ -10,7 +10,7 @@ public class SearchGithubTest extends TestBase{
     MainPage mainPage = new MainPage();
     SearchPage searchPage = new SearchPage();
 
-
+    @Tag("android")
     @Test
     void openArticleTest() {
         step("Открыть поиск и ввести Github", () -> {
