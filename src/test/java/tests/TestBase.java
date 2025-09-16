@@ -22,6 +22,8 @@ public class TestBase {
         Configuration.browser = BrowserstackDriver.class.getName();
         Configuration.browserSize = null;
         Configuration.timeout = 30000;
+        Configuration.screenshots = false; // ← ДОЛЖНО БЫТЬ false
+        Configuration.savePageSource = false;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(

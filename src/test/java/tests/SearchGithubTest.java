@@ -26,5 +26,9 @@ public class SearchGithubTest extends TestBase{
         step("Проверить найденный контент", () -> {
             searchPage.verifyContent();
         });
+
+        step("Проверить заголовок статьи", () -> {
+            searchPage.verifyArticleTitle("GitHub");
+        });
     }
 }
