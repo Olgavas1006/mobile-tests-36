@@ -13,8 +13,8 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
 
-import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
+
 
 public class TestBase {
     @BeforeAll
@@ -22,8 +22,8 @@ public class TestBase {
         Configuration.browser = BrowserstackDriver.class.getName();
         Configuration.browserSize = null;
         Configuration.timeout = 30000;
-        Configuration.screenshots = false; // ← ДОЛЖНО БЫТЬ false
-        Configuration.savePageSource = false;
+        Configuration.pageLoadTimeout = 0;
+        Configuration.pageLoadStrategy = "none";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
