@@ -60,4 +60,21 @@ tasks.withType(Test) {
 
     }
 
+task startAppium(type: Exec) {
+    commandLine 'sh', '-c', '''
+        pkill -f appium || true
+        sleep 3
+        appium --port 4723 --log-level warn --relaxed-security &
+        sleep 15
+    '''
+}
 
+task stopAppium(type: Exec) {
+    commandLine 'pkill', '-f', 'appium'
+    ignoreExitValue true
+}
+
+android {
+    dependsOn startAppium
+    finalizedBy stopAppium
+}
