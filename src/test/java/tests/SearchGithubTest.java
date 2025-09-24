@@ -1,44 +1,44 @@
 package tests;
 
 import org.junit.jupiter.api.*;
-import pages.MainPage;
-import pages.SkipOnboardingPage;
-import pages.SearchPage;
+import screens.MainScreen;
+import screens.SkipOnboardingScreen;
+import screens.SearchScreen;
 import static io.qameta.allure.Allure.step;
 
 
 public class SearchGithubTest extends TestBase{
-    MainPage mainPage = new MainPage();
-    SearchPage searchPage = new SearchPage();
-    SkipOnboardingPage onboardingPage = new SkipOnboardingPage();
+    MainScreen mainScreen = new MainScreen();
+    SearchScreen searchScreen = new SearchScreen();
+    SkipOnboardingScreen onboardingScreen = new SkipOnboardingScreen();
 
 
-
-
-    @Tag("android")
     @Test
     void openArticleTest() {
         step("Пропустить онбординг если отображается", () -> {
-            onboardingPage.skipOnboardingIfVisible();
+            onboardingScreen.skipOnboardingIfVisible();
         });
 
         step("Открыть поиск и ввести Github", () -> {
-            mainPage.clickSearchWikipediaIcon();
-            searchPage.searchPageSetValue("Github");
+            mainScreen.clickSearchWikipediaIcon();
+            searchScreen.searchPageSetValue("Github");
         });
 
         step("Открыть первую статью из результатов", () -> {
-            searchPage.clickTheFirstResult();
+            searchScreen.clickTheFirstResult();
         });
 
         step("Закрыть всплывающее окно если отображается", () -> {
                 Thread.sleep(1000);
-                 onboardingPage.closeOnboardingIfNeeded();
+                 onboardingScreen.closeOnboardingIfNeeded();
         });
-        step("Проверить найденный контент", searchPage::verifyContent);
+
+        step("Проверить найденный контент", () -> {
+            searchScreen.verifyContent();
+        });
 
         step("Проверить заголовок статьи", () -> {
-            searchPage.verifyArticleTitle("GitHub");
+            searchScreen.verifyArticleTitle("GitHub");
         });
     }
 

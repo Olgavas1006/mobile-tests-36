@@ -10,6 +10,7 @@ import static io.qameta.allure.Allure.step;
 import static org.openqa.selenium.By.id;
 
 public class SearchTests extends TestBase {
+
     @Test
     void successfulSearchTest() {
         step("Type search", () -> {

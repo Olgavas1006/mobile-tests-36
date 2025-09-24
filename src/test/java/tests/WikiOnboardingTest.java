@@ -4,33 +4,41 @@ package tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
-import pages.OnboardingPage;
+import screens.FirstOnboardingScreen;
+import screens.FourthOnboardingScreen;
+import screens.SecondOnboardingScreen;
+import screens.ThirdOnboardingScreen;
+
 import static io.qameta.allure.Allure.step;
 
 public class WikiOnboardingTest extends TestBase {
-    OnboardingPage onboardingPage = new OnboardingPage();
+
+    FirstOnboardingScreen firstScreen = new FirstOnboardingScreen();
+    SecondOnboardingScreen secondScreen = new SecondOnboardingScreen();
+    ThirdOnboardingScreen thirdScreen = new ThirdOnboardingScreen();
+    FourthOnboardingScreen fourthScreen = new FourthOnboardingScreen();
 
     @Tag("android")
     @Test
     @DisplayName("Проверка экранов онбординга")
     void verifyGettingStartedScreensTest() {
         step("Проверить первый экран", () -> {
-            onboardingPage.verifyFirstScreen();
-            onboardingPage.goToNextScreen();
+            firstScreen.verifyFirstScreen();
+            firstScreen.goToNextScreen();
         });
 
         step("Проверить второй экран", () -> {
-            onboardingPage.verifySecondScreen();
-            onboardingPage.goToNextScreen();
+            secondScreen.verifySecondScreen();
+            secondScreen.goToNextScreen();
         });
 
         step("Проверить третий экран", () -> {
-            onboardingPage.verifyThirdScreen();
-            onboardingPage.goToNextScreen();
+            thirdScreen.verifyThirdScreen();
+            thirdScreen.goToNextScreen();
         });
 
         step("Проверить четвертый экран", () -> {
-            onboardingPage.verifyFourthScreen();
+            fourthScreen.verifyFourthScreen();
         });
     }
 }
