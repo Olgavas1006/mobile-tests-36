@@ -8,11 +8,13 @@ import static io.qameta.allure.Allure.step;
 
 
 public class SearchGithubTest extends TestBase{
+
     MainScreen mainScreen = new MainScreen();
     SearchScreen searchScreen = new SearchScreen();
     SkipOnboardingScreen onboardingScreen = new SkipOnboardingScreen();
 
 
+    @Tag("android")
     @Test
     void openArticleTest() {
         step("Пропустить онбординг если отображается", () -> {
