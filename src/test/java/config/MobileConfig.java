@@ -30,5 +30,4 @@ public interface MobileConfig extends Config {
 
     @Key("sessionName")
     String sessionName();
-
 }
