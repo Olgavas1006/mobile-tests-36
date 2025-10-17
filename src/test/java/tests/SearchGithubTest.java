@@ -13,8 +13,6 @@ public class SearchGithubTest extends TestBase{
     SearchScreen searchScreen = new SearchScreen();
     SkipOnboardingScreen onboardingScreen = new SkipOnboardingScreen();
 
-
-    @Tag("android")
     @Test
     void openArticleTest() {
         step("Пропустить онбординг если отображается", () -> {
