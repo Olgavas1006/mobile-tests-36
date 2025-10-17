@@ -19,6 +19,7 @@ public class WikiOnboardingTest extends TestBase {
     FourthOnboardingScreen fourthScreen = new FourthOnboardingScreen();
 
 
+    @Tag("android")
     @Test
     @DisplayName("Проверка экранов онбординга")
     void verifyGettingStartedScreensTest() {
