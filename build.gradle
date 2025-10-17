@@ -57,7 +57,12 @@ task android(type: Test) {
     useJUnitPlatform {
         includeTags ("android")
     }
+}
 
+task jenkins(type: Test) {
+    useJUnitPlatform {
+        includeTags ("jenkins")
+    }
 }
 
 
