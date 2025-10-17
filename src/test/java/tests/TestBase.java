@@ -19,7 +19,7 @@ public class TestBase {
 
     @BeforeAll
     static void setup() {
-        String deviceHost = System.getProperty("deviceHost", "emulation");
+        String deviceHost = System.getProperty("deviceHost", "browserstack");
         System.out.println("Running tests on: " + deviceHost);
 
         switch (deviceHost) {
@@ -41,21 +41,15 @@ public class TestBase {
     @BeforeEach
     void addListener() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        open();
     }
 
     @AfterEach
-    void addAttachments() {
-        String deviceHost = System.getProperty("deviceHost", "emulation");
+    void addAttachments(){
+        String sessionId = Selenide.sessionId().toString();
+        Attach.pageSource();
+        closeWebDriver();
 
-        if ("browserstack".equals(deviceHost)) {
-            String sessionId = Selenide.sessionId().toString();
-            Attach.pageSource();
-            closeWebDriver();
-            Attach.addVideo(sessionId);
-        } else {
-            Attach.screenshotAs("Last screenshot");
-            Attach.pageSource();
-            closeWebDriver();
-        }
+        Attach.addVideo(sessionId);
     }
 }
