@@ -38,25 +38,25 @@ public class TestBase {
         Configuration.remote = null;
     }
 
- //   @BeforeEach
- //   void addListener() {
-    //    SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
-    //    open();
-  //  }
+    @BeforeEach
+    void addListener() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        open();
+    }
 
-//    @AfterEach
- //   void addAttachments() {
-  //      String deviceHost = System.getProperty("deviceHost", "emulation");
+    @AfterEach
+    void addAttachments() {
+        String deviceHost = System.getProperty("deviceHost", "emulation");
 
-   //     if ("browserstack".equals(deviceHost)) {
-    //        String sessionId = Selenide.sessionId().toString();
-    //        Attach.pageSource();
-     //       closeWebDriver();
-     //       Attach.addVideo(sessionId);
-     //   } else {
-      //      Attach.screenshotAs("Last screenshot");
-       //     Attach.pageSource();
-      //      closeWebDriver();
-     //   }
- //   }
+        if ("browserstack".equals(deviceHost)) {
+            String sessionId = Selenide.sessionId().toString();
+            Attach.pageSource();
+            closeWebDriver();
+            Attach.addVideo(sessionId);
+        } else {
+            Attach.screenshotAs("Last screenshot");
+            Attach.pageSource();
+            closeWebDriver();
+        }
+    }
 }
